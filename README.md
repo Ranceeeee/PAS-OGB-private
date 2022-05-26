@@ -1,6 +1,5 @@
 # PAS-OGB
-We apply our novel framework PAS to automatically learn data-specific pooling architectures for graph classification task, which has been published in CIKM 2021: [Pooling Architecture Search for Graph Classification](https://arxiv.org/pdf/2108.10587.pdf).
-We verified the effect on [Open Graph Benchmark (OGB) datasets](https://ogb.stanford.edu/docs/leader_graphprop/) (ogbg-molhiv, ogbg-molpcba and ogbg-ppa) based on OGB examples. Thanks for their contributions.
+We apply our novel framework PAS to automatically learn data-specific pooling architectures for graph classification task.
 
 ## Requirements
 ```
@@ -34,13 +33,13 @@ scikit-learn==0.24.2 ogb>=1.3.2 deep_gcns_torch LibAUC
 
 
 ### Training Process for ogbg-molhiv
- 1. Search Architecture
+ 1. Search Architecture.
 
 ```
 python hiv_train_search.py --gpu 0 --num_layers 14 --epochs 50 --data ogbg-molhiv
 --remove_pooling True
 ```
-2. Extract finerprints and train Random Forest by following [PaddleHelix](https://github.com/PaddlePaddle/PaddleHelix/tree/dev/competition/ogbg_molhiv)
+2. Extract finerprints and train Random Forest.
 ```
 python extract_fingerprint.py
 python random_forest.py
@@ -63,7 +62,7 @@ python -u finetune_Drop.py --data ogbg-molhiv --gpu 3 --dropout 0.1 --lr 0.005 -
 
 ### Training Process for ogbg-molpcba
 
- 1. Search Architecture
+ 1. Search Architecture.
 ```
 python model_search.py --gpu 0 --num_layers 5 --epochs 5 --data ogbg-molpcba
 --remove_pooling True
@@ -101,13 +100,4 @@ python model_search.py --gpu 0 --num_layers 5 --epochs 10 --batch_size 24 --hidd
 python finetune.py --gpu 1 --dropout 0.5 --lr 0.0005 --batch_size 24 --num_layers 5 --epochs 200 --warmup_epochs 20 --hidden_size 512 --arch_filename ./exp_res/ogbg-ppa-searched_res-20220415-112841-eps0.0-reg1e-05.tx
 ```
 
-### Cite
-Please kindly cite our paper if you use this code:
-```
-@inproceedings{wei2021pooling,
-  title={Pooling Architecture Search for Graph Classification},
-  author={Wei, Lanning and Zhao, Huan and Yao, Quanming and He, Zhiqiang},
-  booktitle={CIKM},
-  year={2021}
-}
-```
+
